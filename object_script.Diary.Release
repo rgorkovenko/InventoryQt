@@ -1,0 +1,12 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\inventory.o
+./release\item.o
+./release\dbcontroller.o
+./release\qrc_images.o
+./release\moc_mainwindow.o
+./release\moc_inventory.o
+./release\moc_item.o
+./release\moc_dbcontroller.o
+);
