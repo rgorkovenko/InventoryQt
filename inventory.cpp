@@ -12,6 +12,7 @@ Inventory::Inventory(QWidget *parent) : QTableWidget(parent)
     this->initWidgets();
 
     setDragDropMode(DragDropMode::InternalMove);
+    this->player = new QMediaPlayer;
 }
 
 void Inventory::initData()
@@ -110,8 +111,6 @@ void Inventory::mouseReleaseEvent(QMouseEvent *event)
 
 void Inventory::eatApple()
 {
-    QMediaPlayer *player = new QMediaPlayer;
-
     player->setMedia(QUrl("qrc:/default/apple/sound/eatapple.mp3"));
     player->setVolume(50);
     player->play();

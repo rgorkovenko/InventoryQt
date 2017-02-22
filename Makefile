@@ -222,9 +222,11 @@ Makefile: Diary.pro C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++/qmake.conf C:
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/lex.prf \
 		Diary.pro \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/qtmaind.prl \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Multimedia.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Sql.prl \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Network.prl \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Core.prl
 	$(QMAKE) -o Makefile Diary.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/spec_pre.prf:
@@ -390,9 +392,11 @@ C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/yacc.prf:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/features/lex.prf:
 Diary.pro:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/qtmaind.prl:
+C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Multimedia.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Widgets.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Gui.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Sql.prl:
+C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Network.prl:
 C:/Qt/Qt5.8.0/5.8/mingw53_32/lib/Qt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile Diary.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"

@@ -7,6 +7,7 @@
 DBController::DBController(QObject *parent) : QObject(parent)
 {
     this->dbConnection = QSqlDatabase::addDatabase("QSQLITE");
+
     this->dbConnection.setDatabaseName(QDir::currentPath() + QString("/database/database.db"));
     bool ok = this->dbConnection.open();
     if (!ok){

@@ -1,6 +1,2 @@
 
-debug/dbcontroller.o
-
-debug/inventory.o
-
-debug/item.o
+debug

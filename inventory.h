@@ -12,6 +12,7 @@
 #include <QDrag>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QMediaPlayer>
 
 class Inventory : public QTableWidget
 {
@@ -49,6 +50,7 @@ protected:
 private:
     QVector<QVector<Items> > items;
     int sizeItems = 3;
+    QMediaPlayer *player;
 
     void initData();
     void initWidgets();
