@@ -1,1 +1,4 @@
 .idea/
+.qmake.stash
+debug/
+release/
