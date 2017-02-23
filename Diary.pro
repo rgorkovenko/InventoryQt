@@ -26,14 +26,17 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     inventory.cpp \
     item.cpp \
-    dbcontroller.cpp
+    dbcontroller.cpp \
+    menu.cpp
 
 HEADERS  += mainwindow.h \
     inventory.h \
     item.h \
-    dbcontroller.h
+    dbcontroller.h \
+    menu.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    menu.ui
 
 RESOURCES += \
     images.qrc

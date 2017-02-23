@@ -4,9 +4,11 @@ INPUT(
 ./debug\inventory.o
 ./debug\item.o
 ./debug\dbcontroller.o
+./debug\menu.o
 ./debug\qrc_images.o
 ./debug\moc_mainwindow.o
 ./debug\moc_inventory.o
 ./debug\moc_item.o
 ./debug\moc_dbcontroller.o
+./debug\moc_menu.o
 );

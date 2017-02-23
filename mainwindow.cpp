@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    menu_ui = new Menu();
     ui->setupUi(this);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -27,6 +28,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->tableWidget, ui->tableWidget->loadDataFromDB, dbcontroller, &DBController::loadInventory);
     connect(ui->label, ui->label->loadItemByNameFromDB, dbcontroller, &DBController::loadItemDataByName);
     connect(ui->tableWidget, ui->tableWidget->setItemsConnetions, this, &MainWindow::setItemsConnections);
+
+
+    connect(menu_ui, menu_ui->bStartClicked, this, startGame);
+    connect(menu_ui, menu_ui->bExitClicked, this, exitGame);
+    connect(menu_ui, menu_ui->bSaveClicked, this, saveInventory);
+    connect(menu_ui, menu_ui->bLoadClicked, this, loadInventory);
 }
 
 MainWindow::~MainWindow()
@@ -34,30 +41,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_bExit_clicked()
+void MainWindow::exitGame()
 {
     close();
 }
 
-void MainWindow::on_bStart_clicked()
+void MainWindow::startGame()
 {
-    QPropertyAnimation* animation = new QPropertyAnimation(ui->mainMenu, "geometry");
-    animation->setDuration(500);
-    animation->setEasingCurve(QEasingCurve::Linear);
-    animation->setEndValue(QRect(0,0,this->width(),0));
-    animation->start(QAbstractAnimation::DeleteWhenStopped);
     this->pause(false);
 }
 
 void MainWindow::on_bMainMenu_clicked()
 {
-    QPropertyAnimation* animation = new QPropertyAnimation(ui->mainMenu, "geometry");
-    animation->setDuration(500);
-    animation->setEasingCurve(QEasingCurve::Linear);
-    animation->setEndValue(QRect(0,0,this->width(),30));
-    animation->start(QAbstractAnimation::DeleteWhenStopped);
-
     pause(true);
+    menu_ui->exec();
 }
 
 void MainWindow::on_pause()
@@ -65,18 +62,19 @@ void MainWindow::on_pause()
 
 }
 
-void MainWindow::on_saveInventory_clicked()
+void MainWindow::saveInventory()
 {
     saveGame(ui->tableWidget->getItems());
     QMessageBox *msgBox = new QMessageBox(this);
     msgBox->setText("Сохранение завершено");
     msgBox->exec();
+    pause(false);
 }
 
-void MainWindow::on_loadInventory_clicked()
+void MainWindow::loadInventory()
 {
     ui->tableWidget->loadDataFromDB();
-    ui->bStart->click();
+    startGame();
 }
 
 void MainWindow::setItemsConnections()
