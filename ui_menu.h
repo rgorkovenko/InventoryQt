@@ -33,10 +33,10 @@ public:
     QPushButton *bExit;
     QGroupBox *groupBox;
     QGridLayout *gridLayout;
-    QPushButton *pushButton_5;
+    QPushButton *createServer;
     QLabel *label_2;
-    QPushButton *pushButton_6;
-    QLineEdit *lineEdit;
+    QPushButton *connectServer;
+    QLineEdit *connectedIp;
     QLabel *label;
 
     void setupUi(QDialog *Menu)
@@ -70,25 +70,25 @@ public:
         groupBox->setObjectName(QStringLiteral("groupBox"));
         gridLayout = new QGridLayout(groupBox);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        pushButton_5 = new QPushButton(groupBox);
-        pushButton_5->setObjectName(QStringLiteral("pushButton_5"));
+        createServer = new QPushButton(groupBox);
+        createServer->setObjectName(QStringLiteral("createServer"));
 
-        gridLayout->addWidget(pushButton_5, 0, 0, 1, 1);
+        gridLayout->addWidget(createServer, 0, 0, 1, 1);
 
         label_2 = new QLabel(groupBox);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         gridLayout->addWidget(label_2, 1, 1, 1, 1);
 
-        pushButton_6 = new QPushButton(groupBox);
-        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+        connectServer = new QPushButton(groupBox);
+        connectServer->setObjectName(QStringLiteral("connectServer"));
 
-        gridLayout->addWidget(pushButton_6, 1, 0, 1, 1);
+        gridLayout->addWidget(connectServer, 1, 0, 1, 1);
 
-        lineEdit = new QLineEdit(groupBox);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
+        connectedIp = new QLineEdit(groupBox);
+        connectedIp->setObjectName(QStringLiteral("connectedIp"));
 
-        gridLayout->addWidget(lineEdit, 1, 2, 1, 1);
+        gridLayout->addWidget(connectedIp, 1, 2, 1, 1);
 
         label = new QLabel(groupBox);
         label->setObjectName(QStringLiteral("label"));
@@ -112,9 +112,9 @@ public:
         bLoad->setText(QApplication::translate("Menu", "\320\227\320\260\320\263\321\200\321\203\320\267\320\270\321\202\321\214", Q_NULLPTR));
         bExit->setText(QApplication::translate("Menu", "\320\222\321\213\321\205\320\276\320\264", Q_NULLPTR));
         groupBox->setTitle(QApplication::translate("Menu", "LAN", Q_NULLPTR));
-        pushButton_5->setText(QApplication::translate("Menu", "\320\241\320\276\320\267\320\264\320\260\321\202\321\214 \321\201\320\265\321\200\320\262\320\265\321\200", Q_NULLPTR));
+        createServer->setText(QApplication::translate("Menu", "\320\241\320\276\320\267\320\264\320\260\321\202\321\214 \321\201\320\265\321\200\320\262\320\265\321\200", Q_NULLPTR));
         label_2->setText(QApplication::translate("Menu", "Ip:", Q_NULLPTR));
-        pushButton_6->setText(QApplication::translate("Menu", "\320\237\320\276\320\264\320\272\320\273\321\216\321\207\320\270\321\202\321\214\321\201\321\217 \320\272 \321\201\320\265\321\200\320\262\320\265\321\200\321\203", Q_NULLPTR));
+        connectServer->setText(QApplication::translate("Menu", "\320\237\320\276\320\264\320\272\320\273\321\216\321\207\320\270\321\202\321\214\321\201\321\217 \320\272 \321\201\320\265\321\200\320\262\320\265\321\200\321\203", Q_NULLPTR));
         label->setText(QApplication::translate("Menu", "\320\237\320\276\321\200\321\202 \321\201\320\265\321\200\320\262\320\265\321\200\320\260: 6666", Q_NULLPTR));
     } // retranslateUi
 

@@ -20,6 +20,8 @@ signals:
     void bStartClicked();
     void bSaveClicked();
     void bLoadClicked();
+    void bCreateServerClicked();
+    void bConnectServerClicked();
 
 private slots:
     void on_bExit_clicked();
@@ -29,6 +31,10 @@ private slots:
     void on_bSave_clicked();
 
     void on_bLoad_clicked();
+
+    void on_connectServer_clicked();
+
+    void on_createServer_clicked();
 
 private:
     Ui::Menu *ui;

@@ -9,6 +9,8 @@
 #include <inventory.h>
 #include <dbcontroller.h>
 #include <menu.h>
+#include <server.h>
+#include <client.h>
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +26,8 @@ public:
 
     DBController *dbcontroller;
     Menu *menu_ui;
+    Client *client;
+    Server *server;
 
 signals:
     void pause(bool);
@@ -33,6 +37,8 @@ private slots:
     void on_pause();
     void on_bMainMenu_clicked();
     void setItemsConnections();
+    void createServer();
+    void connectServer();
 
 private:
     Ui::MainWindow *ui;

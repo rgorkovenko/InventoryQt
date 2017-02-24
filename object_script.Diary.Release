@@ -5,10 +5,14 @@ INPUT(
 ./release\item.o
 ./release\dbcontroller.o
 ./release\menu.o
+./release\client.o
+./release\server.o
 ./release\qrc_images.o
 ./release\moc_mainwindow.o
 ./release\moc_inventory.o
 ./release\moc_item.o
 ./release\moc_dbcontroller.o
 ./release\moc_menu.o
+./release\moc_client.o
+./release\moc_server.o
 );

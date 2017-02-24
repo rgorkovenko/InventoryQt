@@ -27,13 +27,17 @@ SOURCES += main.cpp\
     inventory.cpp \
     item.cpp \
     dbcontroller.cpp \
-    menu.cpp
+    menu.cpp \
+    client.cpp \
+    server.cpp
 
 HEADERS  += mainwindow.h \
     inventory.h \
     item.h \
     dbcontroller.h \
-    menu.h
+    menu.h \
+    client.h \
+    server.h
 
 FORMS    += mainwindow.ui \
     menu.ui

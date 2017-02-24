@@ -5,7 +5,8 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    menu_ui = new Menu();
+//    menu_ui = new Menu();
+    client = new Client();
     ui->setupUi(this);
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
@@ -20,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //инициализация базы данных
     dbcontroller = new DBController(this);
 
+    //коннекты основной логики
     connect(this, pause, ui->tableWidget, &Inventory::onPause);
     connect(this, pause, ui->label, &Item::onPause);
     connect(this, pause, ui->bMainMenu, [=](bool active){ui->bMainMenu->setEnabled(!active);});
@@ -29,11 +31,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->label, ui->label->loadItemByNameFromDB, dbcontroller, &DBController::loadItemDataByName);
     connect(ui->tableWidget, ui->tableWidget->setItemsConnetions, this, &MainWindow::setItemsConnections);
 
-
-    connect(menu_ui, menu_ui->bStartClicked, this, startGame);
-    connect(menu_ui, menu_ui->bExitClicked, this, exitGame);
-    connect(menu_ui, menu_ui->bSaveClicked, this, saveInventory);
-    connect(menu_ui, menu_ui->bLoadClicked, this, loadInventory);
+    pause(false);
 }
 
 MainWindow::~MainWindow()
@@ -43,7 +41,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::exitGame()
 {
-    close();
+    this->close();
 }
 
 void MainWindow::startGame()
@@ -54,6 +52,15 @@ void MainWindow::startGame()
 void MainWindow::on_bMainMenu_clicked()
 {
     pause(true);
+    menu_ui = new Menu();
+    connect(menu_ui, menu_ui->bStartClicked, this, startGame);
+    connect(menu_ui, menu_ui->bExitClicked, this, exitGame);
+    connect(menu_ui, menu_ui->bSaveClicked, this, saveInventory);
+    connect(menu_ui, menu_ui->bLoadClicked, this, loadInventory);
+    connect(menu_ui, menu_ui->bCreateServerClicked, this, createServer);
+    connect(menu_ui, menu_ui->bConnectServerClicked, this, connectServer);
+    connect(menu_ui, menu_ui->destroyed, this, [=](){pause(false);});
+
     menu_ui->exec();
 }
 
@@ -91,4 +98,17 @@ void MainWindow::setItemsConnections()
             }
         }
     }
+}
+
+void MainWindow::createServer()
+{
+    server = new Server();
+    server->startListen(6666);
+    pause(false);
+}
+
+void MainWindow::connectServer()
+{
+    client->sendData(QString("Hello world!!!"));
+    qDebug() << QString("---------------------------");
 }

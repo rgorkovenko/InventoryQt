@@ -5,10 +5,14 @@ INPUT(
 ./debug\item.o
 ./debug\dbcontroller.o
 ./debug\menu.o
+./debug\client.o
+./debug\server.o
 ./debug\qrc_images.o
 ./debug\moc_mainwindow.o
 ./debug\moc_inventory.o
 ./debug\moc_item.o
 ./debug\moc_dbcontroller.o
 ./debug\moc_menu.o
+./debug\moc_client.o
+./debug\moc_server.o
 );

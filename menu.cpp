@@ -1,11 +1,13 @@
 #include "menu.h"
 #include "ui_menu.h"
+#include <QDebug>
 
 Menu::Menu(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Menu)
 {
     ui->setupUi(this);
+    this->setAttribute(Qt::WA_DeleteOnClose);
 }
 
 Menu::~Menu()
@@ -34,5 +36,16 @@ void Menu::on_bSave_clicked()
 void Menu::on_bLoad_clicked()
 {
     bLoadClicked();
+    this->close();
+}
+
+void Menu::on_connectServer_clicked()
+{
+    bConnectServerClicked();
+}
+
+void Menu::on_createServer_clicked()
+{
+    bCreateServerClicked();
     this->close();
 }
