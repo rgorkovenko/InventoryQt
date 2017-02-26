@@ -16,6 +16,7 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QWidget>
 #include <inventory.h>
 #include <item.h>
@@ -29,6 +30,7 @@ public:
     QPushButton *bMainMenu;
     Item *label;
     Inventory *tableWidget;
+    QTextEdit *debugLog;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -42,7 +44,7 @@ public:
         bMainMenu = new QPushButton(centralWidget);
         bMainMenu->setObjectName(QStringLiteral("bMainMenu"));
         bMainMenu->setEnabled(false);
-        bMainMenu->setGeometry(QRect(500, 330, 80, 23));
+        bMainMenu->setGeometry(QRect(480, 200, 80, 23));
         label = new Item(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setEnabled(false);
@@ -83,6 +85,10 @@ public:
         tableWidget->setSelectionMode(QAbstractItemView::NoSelection);
         tableWidget->horizontalHeader()->setVisible(false);
         tableWidget->verticalHeader()->setVisible(false);
+        debugLog = new QTextEdit(centralWidget);
+        debugLog->setObjectName(QStringLiteral("debugLog"));
+        debugLog->setGeometry(QRect(420, 230, 261, 181));
+        debugLog->setReadOnly(true);
         MainWindow->setCentralWidget(centralWidget);
 
         retranslateUi(MainWindow);

@@ -12,6 +12,7 @@ public:
 
 signals:
     void loadItemByNameFromDB(QString);
+    void debugLog(QString data);
 
 public slots:
     void onPause(bool active);

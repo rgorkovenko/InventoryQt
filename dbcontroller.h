@@ -21,6 +21,7 @@ public:
     };
 
 signals:
+    void debugLog(QString data);
 
 public slots:
     void loadInventory();

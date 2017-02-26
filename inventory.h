@@ -32,6 +32,11 @@ signals:
     void loadDataFromDB();
     void setItemsConnetions();
 
+    //отправить клиенту задачу отправки данных на сервер
+    void inventoryChanged();
+
+    void debugLog(QString text);
+
 public slots:
     void onPause(bool active);
     void addItem(QPoint locate, QDataStream *dataStream);

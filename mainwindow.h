@@ -5,6 +5,9 @@
 #include <QPropertyAnimation>
 #include <QDebug>
 #include <QMessageBox>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QJsonValue>
 
 #include <inventory.h>
 #include <dbcontroller.h>
@@ -38,8 +41,10 @@ private slots:
     void on_bMainMenu_clicked();
     void setItemsConnections();
     void createServer();
-    void connectServer();
+    void connectServer(QString ip);
+    void sendDataToServer();
 
+    void showDebugLog(QString data);
 private:
     Ui::MainWindow *ui;
 

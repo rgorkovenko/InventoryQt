@@ -106,6 +106,7 @@ void Inventory::mouseReleaseEvent(QMouseEvent *event)
             QWidget *empty = new QWidget(this);
             this->setCellWidget(coord.x(), coord.y(), empty);
         }
+        inventoryChanged();
     }
 }
 
@@ -176,6 +177,7 @@ void Inventory::moveItems(QPoint from, QPoint to)
         QLabel *fromTmp = qobject_cast<QLabel*>(fromItem->children().at(1));
         delete fromTmp;
     }
+    inventoryChanged();
 }
 
 QVector<QVector<Inventory::Items> > Inventory::getItems()
@@ -222,9 +224,13 @@ void Inventory::printInv()
         for(int j = 0; j < this->items[0].size(); j++){
             str += this->items[i][j].name + QString(":") + QString::number(this->items[i][j].count) + QString(" ");
         }
-        qDebug() << str;
+        debugLog(str);
+//        qDebug() << str;
     }
-    qDebug() << QString("Size y: ") << this->items.size();
-    qDebug() << QString("Size x: ") << this->items[0].size();
-    qDebug() << QString("--------------");
+//    qDebug() << QString("Size y: ") << this->items.size();
+//    qDebug() << QString("Size x: ") << this->items[0].size();
+//    qDebug() << QString("--------------");
+    debugLog(QString("Size y: ") + QString::number(this->items.size()));
+    debugLog(QString("Size x: ") + QString::number(this->items[0].size()));
+    debugLog(QString("-----------------"));
 }

@@ -50,7 +50,8 @@ void Item::dragEnterEvent(QDragEnterEvent *event)
 
 void Item::dragMoveEvent(QDragMoveEvent *event)
 {
-    qDebug()<<QString("dragMoveEvent");
+    debugLog(QString("dragMoveEvent"));
+//    qDebug()<<QString("dragMoveEvent");
     if (event->mimeData()->hasFormat("application/x-dnditemdata")) {
         if (event->source() == this) {
             event->setDropAction(Qt::MoveAction);

@@ -12,7 +12,8 @@ DBController::DBController(QObject *parent) : QObject(parent)
     bool ok = this->dbConnection.open();
     if (!ok){
         QSqlError error = this->dbConnection.lastError();
-        qDebug() << error;
+        debugLog(error.text());
+//        qDebug() << error;
     }
 }
 

@@ -21,7 +21,7 @@ signals:
     void bSaveClicked();
     void bLoadClicked();
     void bCreateServerClicked();
-    void bConnectServerClicked();
+    void bConnectServerClicked(QString ip);
 
 private slots:
     void on_bExit_clicked();

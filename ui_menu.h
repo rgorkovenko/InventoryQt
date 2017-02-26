@@ -115,6 +115,7 @@ public:
         createServer->setText(QApplication::translate("Menu", "\320\241\320\276\320\267\320\264\320\260\321\202\321\214 \321\201\320\265\321\200\320\262\320\265\321\200", Q_NULLPTR));
         label_2->setText(QApplication::translate("Menu", "Ip:", Q_NULLPTR));
         connectServer->setText(QApplication::translate("Menu", "\320\237\320\276\320\264\320\272\320\273\321\216\321\207\320\270\321\202\321\214\321\201\321\217 \320\272 \321\201\320\265\321\200\320\262\320\265\321\200\321\203", Q_NULLPTR));
+        connectedIp->setText(QApplication::translate("Menu", "localhost", Q_NULLPTR));
         label->setText(QApplication::translate("Menu", "\320\237\320\276\321\200\321\202 \321\201\320\265\321\200\320\262\320\265\321\200\320\260: 6666", Q_NULLPTR));
     } // retranslateUi
 
