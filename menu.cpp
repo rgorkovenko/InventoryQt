@@ -42,6 +42,7 @@ void Menu::on_bLoad_clicked()
 void Menu::on_connectServer_clicked()
 {
     bConnectServerClicked(this->ui->connectedIp->text());
+    this->close();
 }
 
 void Menu::on_createServer_clicked()

@@ -12,6 +12,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
     ui->tableWidget->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
+    //делаем невидимым вывод отладочных логов
+    ui->debugLog->setVisible(false);
+
     for(int i = 0; i < ui->tableWidget->columnCount(); i++){
         for (int j = 0; j < ui->tableWidget->rowCount(); j++){
             ui->tableWidget->setItem(i,j, new QTableWidgetItem());
@@ -27,7 +30,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this, pause, ui->label, &Item::onPause);
     connect(this, pause, ui->bMainMenu, [=](bool active){ui->bMainMenu->setEnabled(!active);});
 
-    connect(client, client->loadInventoryFromServer, ui->tableWidget, ui->tableWidget->loadData);
+    connect(client, client->loadInventoryFromServer, ui->tableWidget, ui->tableWidget->loadData); //загрузка данных
 
     connect(this, saveGame, dbcontroller, &DBController::saveInventory);
     connect(ui->tableWidget, ui->tableWidget->loadDataFromDB, dbcontroller, &DBController::loadInventory);

@@ -35,6 +35,7 @@ void Client::slotReadyRead()
     QDataStream in(tcpSocket);
     in.setVersion(QDataStream::Qt_5_8);
     for (;;) {
+        //проверяем есть ли данные для считывания и если нет, то выходим
         if (!nextBlockSize) {
             if (tcpSocket->bytesAvailable() < sizeof(quint16)) {
                 break;
@@ -60,13 +61,16 @@ void Client::parseData(QString jsonString){
     QJsonDocument document = QJsonDocument::fromJson(jsonString.toUtf8());
     QJsonArray array = document.array();
 
+    debugLog(jsonString);
     //выходим если пришел не массив
     if(array.count() == 0){
         return;
     }
-    debugLog(jsonString);
+
     //очищаем данные перед заполнением
     items.clear();
+
+    //парсим из json в Items и выводим на форму
     for(int i = 0; i < array.count(); i++){
         QJsonArray row = array[i].toArray();
         QVector<Inventory::Items> itemsRow;

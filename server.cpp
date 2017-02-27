@@ -18,7 +18,6 @@ Server::~Server()
         Clients.remove(i);
     }
     tcpServer->close();
-    qDebug() << QString("Сервер остановлен!!!");
 }
 
 bool Server::getHasCreated()
@@ -28,13 +27,11 @@ bool Server::getHasCreated()
 
 void Server::startListen(int port){
     if (!tcpServer->listen(QHostAddress::Any, port)) {
-//        qDebug() << QString("Server Error, Unable to start the server: %1").arg(tcpServer->errorString());
         debugLog(QString("Server Error, Unable to start the server: %1").arg(tcpServer->errorString()));
         tcpServer->close();
         return;
     }
     debugLog(QString("Server was started in port: %1").arg(QString::number(port)));
-    qDebug() << QString("Server was started in port: %1").arg(QString::number(port));
 }
 
 void Server::closeClientConnection()
@@ -66,14 +63,18 @@ void Server::closeClientConnection()
     connect(Clients[idusersocs], SIGNAL(disconnected()), this, SLOT(closeClientConnection()));
 
     sendToClient(pClientSocket, "Server Response: Connected! You id: " + QString::number(idusersocs));
+    sendToClient(pClientSocket, lastmsg);
 }
 
 void Server::slotReadClient()
 {
     QTcpSocket* pClientSocket = (QTcpSocket*)sender();
     QDataStream in(pClientSocket);
+
+    pClientSocket->flush(); //проталкиваем "застрявшие" данные
     in.setVersion(QDataStream::Qt_5_8);
     for (;;) {
+        //проверяем есть ли еще данные для считывания
         if (!nextBlockSize) {
             if (pClientSocket->bytesAvailable() < sizeof(quint16)) {
                 break;
@@ -84,11 +85,13 @@ void Server::slotReadClient()
         if (pClientSocket->bytesAvailable() < nextBlockSize) {
             break;
         }
-        //получили данные от клиента
+
+        //получаем данные от клиента
         QString str;
         in >> str;
         nextBlockSize = 0;
         //рассылаем данные клиентам
+        lastmsg = str;
         sendToAllClients(str);
     }
 }
@@ -104,8 +107,7 @@ void Server::sendToClient(QTcpSocket *pSocket, const QString &str)
     out << quint16(arrBlock.size() - sizeof(quint16));
 
     pSocket->write(arrBlock);
-    pSocket->flush();
-    qDebug() << str;
+    pSocket->flush(); //проталкиваем "застрявшие" данные
 }
 
 void Server::sendToAllClients(const QString &str)

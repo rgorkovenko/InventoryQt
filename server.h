@@ -29,6 +29,7 @@ private:
     QMap<int, QTcpSocket*> Clients;
 //    QTextEdit*  m_ptxt;
     quint16     nextBlockSize;
+    QString lastmsg; //переменная для отправки инвентаря новым клиентам
 
     void sendToClient(QTcpSocket* pSocket, const QString& str);
     void sendToAllClients(const QString& str);
